@@ -27,17 +27,15 @@ CONTAINS
     DO i = 1, lv
        nth = 0
        DO k = 1, N
-          prt = F(k)
-          nth = nth + (k + 1) * prt
+          nth = nth + (k + 1)
           F(k) = F(k) + nth
        END DO
        write(*,*) "Threads Num = ", TID, F(1), nth
     END DO
     !$OMP END DO
     write(*,*) "Threads Num Final = ", TID, "F(1) = ", F(1), nth
-    !IF (TID == 1) write(*,"(F15.3)") (F(k), k = 1,N)
-    !print*, maxval(F(:))
-
+    IF (TID == 1) write(*,"(F15.3)") (F(k), k = 1,N)
+    IF (TID == 0) write(*,"(A)") "!!!!!!! -GIT- CHANGED MY LIFE !!!!!!!!"
     !$OMP END PARALLEL
 
   END SUBROUTINE TEST_OPENMP

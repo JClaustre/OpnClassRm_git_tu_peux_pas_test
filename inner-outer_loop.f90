@@ -7,12 +7,12 @@ program MAIN
   USE MOD_LOOP
   IMPLICIT NONE
   
-  INTEGER, PARAMETER :: N = 10
+  INTEGER, PARAMETER :: N = 100
   INTEGER :: t1, t2, clock_rate
   REAL(DOUBLE), DIMENSION(:), ALLOCATABLE :: F
 
   ALLOCATE ( F(N) ); F(:) = 0.d0
-  print*, "Hello World"
+  print*, "Hello World - Hello GIT"
   CALL SYSTEM_CLOCK (t1, clock_rate)
   
   CALL TEST_OPENMP (N, F)
@@ -20,7 +20,6 @@ program MAIN
   print*, "Final F(N) = ", F(N)
   CALL SYSTEM_CLOCK (t2, clock_rate)
   write (*,*) "Elapsed Time : ", real(t2-t1) / real(clock_rate)
-
   DEALLOCATE (F)
 
 END program MAIN
