@@ -30,11 +30,10 @@ CONTAINS
           nth = nth + (k + 1)
           F(k) = F(k) + nth
        END DO
-       write(*,*) "Threads Num = ", TID, F(1), nth
+       !write(*,*) "Threads Num = ", TID, F(1), nth
     END DO
     !$OMP END DO
     write(*,*) "Threads Num Final = ", TID, "F(1) = ", F(1), nth
-    IF (TID == 1) write(*,"(F15.3)") (F(k), k = 1,N)
     IF (TID == 0) write(*,"(A)") "!!!!!!! -GIT- CHANGED MY LIFE !!!!!!!!"
     !$OMP END PARALLEL
 
